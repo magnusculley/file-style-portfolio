@@ -1,3 +1,13 @@
+class Content{
+    title: string;
+    description: string;
+
+    constructor(title: string, description: string) {
+        this.title = title;
+        this.description = description;
+    }
+}
+
 
 export class TreeNode{
     static nodeIndex: Map<number, TreeNode> = new Map();
@@ -8,30 +18,50 @@ export class TreeNode{
     children: TreeNode[];
     parent: TreeNode|null;
     top: boolean;
+    content: Content;
     type: "file" | "folder" = "file";
     
     constructor(name: string, parent: TreeNode|null) {
         this.id = TreeNode.nextId++;
+        if (this.id === 1) {
+            this.name = name;
+        } else {
         this.name = name.slice(1);
+        }
         this.children = [];
         this.parent = parent||null;
-        this.top = false;
+        if (this.id === 1) {
+            this.top = true;
+        } else {
+            this.top = false;
+        }
+        this.content = new Content(this.name, "This is a file named " + this.name);
         if (name.startsWith("D")) {
             this.type = "folder";
         } else {
             this.type = "file";
         } 
         TreeNode.nodeIndex.set(this.id, this);
+        if (parent) {
+            this.attachToParent(parent);
+        }
     }
 
-    static findById(id: number): TreeNode | undefined {
-        return TreeNode.nodeIndex.get(id);
+    static findById(id: number): TreeNode{
+        const node = TreeNode.nodeIndex.get(id);
+        if (!node) {
+            throw new Error(`Node with ID ${id} not found`);
+        }
+        return node;
     }
 
-    addChild(name: string): TreeNode{
+    addChild(name: string):  void{
         const child = new TreeNode(name, this);
-        this.children.push(child);
-        return child;
+    }
+
+    attachToParent(parent: TreeNode): void {
+        this.parent = parent;
+        parent.children.push(this);
     }
 
     toggleTop(): void {

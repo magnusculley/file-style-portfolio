@@ -5,7 +5,7 @@ function renderTree(): void {
 	document.body.innerHTML = myTree.root.htmlize();
 
 	document.querySelectorAll<HTMLButtonElement>(".tree-node-button").forEach((button) => {
-		button.addEventListener("dblclick", () => {
+		button.addEventListener("click", () => {
 			const nodeId = Number(button.dataset.nodeId);
 			const node = TreeNode.findById(nodeId);
 
