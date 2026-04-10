@@ -1,13 +1,4 @@
-class Content{
-    title: string;
-    description: string;
-
-    constructor(title: string, description: string) {
-        this.title = title;
-        this.description = description;
-    }
-}
-
+import {Content} from "./contentclass.ts";
 
 export class TreeNode{
     static nodeIndex: Map<number, TreeNode> = new Map();

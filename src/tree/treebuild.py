@@ -14,3 +14,4 @@ for entry in path.rglob("*"):
 with open("my-parcel-app/src/tree/tree.json", "w") as f:
     json.dump(filesystem, f)
     print (json.dumps(filesystem))
+    print("console.log(json.dumps(filesystem))")

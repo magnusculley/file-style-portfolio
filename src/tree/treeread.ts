@@ -21,4 +21,6 @@ for (const entry of treeData) {
         newnode = new TreeNode(name, parentNode);
         nodes.push(newnode);
     }
+    console.log("Tree loaded with nodes:", nodes);
 }
+
