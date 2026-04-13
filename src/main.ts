@@ -1,7 +1,7 @@
 import { TreeNode } from "./tree/treeclass";
 import { myTree } from "./tree/treeread";
-import { renderHeader } from "./page/Header";
-import { renderBody } from "./page/body";
+import { renderHeader } from "./page/header";
+import { renderTreeSpace } from "./page/treespace";
 import { renderFooter } from "./page/footer";
 
 function renderTree(): void {
@@ -13,7 +13,7 @@ function renderTree(): void {
 
 	app.innerHTML = `
 		${renderHeader()}
-		${renderBody(myTree.root.htmlize())}
+		${renderTreeSpace(myTree.root.htmlize())}
 		${renderFooter()}
 	`;
 
@@ -27,7 +27,9 @@ function renderTree(): void {
 		button.addEventListener("dblclick", () => {
 			const nodeId = Number(button.dataset.nodeId);
 			const node = TreeNode.findById(nodeId);
+			if (node.type === "file") {
 			void node.content.display(node.name);
+			}
 		});
 	});
 }

@@ -1,7 +1,5 @@
 export function renderFooter(): string {
   return `
-    <footer class="page-footer">
-      <small>footer</small>
-    </footer>
+  <div id = "footer"> © 2024 My Parcel App. All rights reserved. </div>
   `;
 }

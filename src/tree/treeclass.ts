@@ -26,8 +26,8 @@ export class TreeNode{
         } else {
             this.top = false;
         }
-        this.content = new Content(this.name, "This is a file named " + this.name);
-        if (name.startsWith("D")) {
+        this.content = new Content(this.name, "This is a " + this.type + " named " + this.name);
+        if (name.startsWith("D") || name==="root") {
             this.type = "folder";
         } else {
             this.type = "file";
