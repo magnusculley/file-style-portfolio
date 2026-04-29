@@ -1,19 +1,44 @@
+@import url('https://fonts.cdnfonts.com/css/segoe-ui-variable');
+
 html,
 body {
     height: 100%;
     margin: 0;
+    font-family: "Segoe UI Variable", Helvetica, serif;
+}
+
+button{
+    font-family: inherit;
+    padding:auto;
+    margin:auto;
+    background-color: #191919;
+    color: #ffffff;
+    border: none;
+}
+
+button:hover{
+    background-color:#494949 ;
+    cursor: pointer;
 }
 
 #app {
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #191919;
 }
 
-#body {
+#treespace {
     flex: 1;
+    display: flex;
 }
 
 #footer {
     margin-top: auto;
+    background-color: #f1f1f1;
+}
+
+#header{
+    background-color: #212529;
 }
