@@ -1,5 +1,5 @@
 export function renderFooter(): string {
   return `
-  <div id = "footer"> hello </div>
+  <div id = "footer"> maybe remove </div>
   `;
 }
