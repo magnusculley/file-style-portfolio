@@ -34,9 +34,14 @@ button:hover{
     display: flex;
 }
 
+.tree-children {
+    margin-left: 1rem;
+}
+
 #footer {
     margin-top: auto;
-    background-color: #f1f1f1;
+    background-color: #1f1f1f;
+    color: white;
 }
 
 #header{
