@@ -21,11 +21,7 @@ export class TreeNode{
         }
         this.children = [];
         this.parent = parent||null;
-        if (this.id === 1) {
-            this.top = true;
-        } else {
-            this.top = false;
-        }
+        this.top = false;
         this.content = new Content(this.name, "This is a " + this.type + " named " + this.name);
         if (name.startsWith("D") || name==="root") {
             this.type = "folder";
@@ -60,14 +56,18 @@ export class TreeNode{
     }
 
     htmlize(): string{
-        return `
-        <div>
-            <button class="tree-node-button" data-node-id="${this.id}">${this.name}</button>
-            <div style="margin-left: 20px;">
-                ${this.top ? this.children.map(child => child.htmlize()).join('') : ''}
-            </div>
-        </div>
-        `;
+        if (this.top) {
+            return `<div class="tree-node">
+                <button class="tree-node-button" data-node-id="${this.id}">${this.name}</button>
+                <div class="tree-children">
+                    ${this.children.map(child => child.htmlize()).join("")}
+                </div>
+            </div>`;
+        } else {
+            return `<div class="tree-node">
+                <button class="tree-node-button" data-node-id="${this.id}">${this.name}</button>
+            </div>`;
+        }
     }
 }
 
